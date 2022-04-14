@@ -1,9 +1,6 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
-using Microsoft.EntityFrameworkCore;
-using WebApi.Common.Enums;
 using WebApi.DBOperations;
 
 namespace WebApi.Applications.ActorOperations.Queries.GetActorDetail

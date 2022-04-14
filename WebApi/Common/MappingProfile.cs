@@ -1,7 +1,5 @@
-using System.Collections.Generic;
 using AutoMapper;
 using WebApi.Applications.MovieOperations.Commands.CreateMovie;
-using WebApi.Common.Enums;
 using WebApi.Entities;
 using WebApi.Applications.MovieOperations.Queries.GetMovieDetail;
 using WebApi.Applications.MovieOperations.Queries.GetMovies;
@@ -17,16 +15,16 @@ namespace WebApi.Common
         {
             CreateMap<CreateMovieModel,Movie>();
             CreateMap<Movie,MoiveDetailViewModel>()
-                                                  .ForMember(dst=> dst.Genre, opt=> opt.MapFrom(src=> (((GenreEnum)src.GenreId).ToString())))
-                                                  .ForMember(dst=> dst.Director, opt=> opt.MapFrom(src=> (((DirectorEnum)src.DirectorId).ToString())))
+                                                  .ForMember(dst=> dst.Genre, opt=> opt.MapFrom(src=> src.Genre.Name))
+                                                  .ForMember(dst=> dst.Director, opt=> opt.MapFrom(src=> (src.Director.FullName)))
                                                   .ForMember(dst=> dst.PublisDate, opt=> opt.MapFrom(src=> (src.PublisDate.Date.ToString("dd-MM-yyyy"))))
                                                   .ForMember(dst=> dst.ActorName, opt=> opt.MapFrom(src=> src.Actor.Fullname));
                                                   
                                                   
             CreateMap<Movie,MoivesViewModel>()
-                                                  .ForMember(dst=> dst.Genre, opt=> opt.MapFrom(src=> (((GenreEnum)src.GenreId).ToString())))
+                                                  .ForMember(dst=> dst.Genre, opt=> opt.MapFrom(src=> src.Genre.Name))
                                                   .ForMember(dst=> dst.ActorName, opt=> opt.MapFrom(src=> src.Actor.Fullname))
-                                                  .ForMember(dst=> dst.Director, opt=> opt.MapFrom(src=> (((DirectorEnum)src.DirectorId).ToString())))
+                                                  .ForMember(dst=> dst.Director, opt=> opt.MapFrom(src=> (src.Director.FullName)))
                                                   .ForMember(dst=> dst.PublisDate, opt=> opt.MapFrom(src=> (src.PublisDate.Date.ToString("dd-MM-yyyy"))));
 
             CreateMap<Actor,ActorsViewModel>()

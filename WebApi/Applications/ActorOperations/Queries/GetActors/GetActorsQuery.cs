@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
-using WebApi.Common.Enums;
 using WebApi.DBOperations;
 
 namespace WebApi.Applications.MovieOperations.Queries.GetActors

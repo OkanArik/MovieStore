@@ -14,7 +14,7 @@ namespace WebApi
     public class Program
     {
         public static void Main(string[] args)
-        {
+        {  
             var host = CreateHostBuilder(args).Build();
 
             using(var scope = host.Services.CreateScope())
@@ -23,9 +23,7 @@ namespace WebApi
                 DataGenerator.Initialize(services);
             }
             host.Run();
-
-            
-        }
+        }       
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)

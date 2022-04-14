@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using WebApi.Common.Enums;
 using WebApi.DBOperations;
 
 namespace WebApi.Applications.MovieOperations.Queries.GetMovies
@@ -20,7 +19,7 @@ namespace WebApi.Applications.MovieOperations.Queries.GetMovies
 
         public List<MoivesViewModel> Handle()
         {
-             var movieList = _dbContext.Movies.Include(x=>x.Actor).OrderBy(x => x.Id).ToList();
+             var movieList = _dbContext.Movies.Include(x=>x.Actor).Include(x=>x.Genre).Include(x=>x.Director).OrderBy(x => x.Id).ToList();
              List<MoivesViewModel> vm= _mapper.Map<List<MoivesViewModel>>(movieList); 
               return vm;
         }

@@ -17,6 +17,31 @@ namespace WebApi.DBOperations
                 {
                     return;
                 }
+                context.Directors.AddRange(
+                    new Director{
+                        FullName="Frank Darabont",
+                        BirthDay=new DateTime(1967,11,09),
+                    },
+                    new Director{
+                        FullName="Francis Ford Coppola",
+                        BirthDay=new DateTime(1981,02,23),
+                    },
+                    new Director{
+                        FullName="Robert Zemeckis",
+                        BirthDay=new DateTime(1978,03,08),
+                    }
+                );
+                context.Genres.AddRange(
+                    new Genre{
+                        Name="Drama",
+                    },
+                    new Genre{
+                        Name="Detective",
+                    },
+                    new Genre{
+                        Name="Comedy Drama",
+                    }
+                );
                 context.Actors.AddRange(
                     new Actor{
                         Fullname ="Tim Robbins",

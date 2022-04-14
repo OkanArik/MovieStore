@@ -1,9 +1,7 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using WebApi.Common.Enums;
 using WebApi.DBOperations;
 
 namespace WebApi.Applications.MovieOperations.Queries.GetMovieDetail
@@ -22,7 +20,7 @@ namespace WebApi.Applications.MovieOperations.Queries.GetMovieDetail
 
         public MoiveDetailViewModel Handle()
         {
-             var movie = _dbContext.Movies.Include(x=>x.Actor).Where(movie => movie.Id==MovieId).SingleOrDefault();
+             var movie = _dbContext.Movies.Include(x=>x.Actor).Include(x=>x.Genre).Include(x=>x.Director).Where(movie => movie.Id==MovieId).SingleOrDefault();
 
              if(movie is null)
                throw new InvalidOperationException("Film bulunamadı!");
