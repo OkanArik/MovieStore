@@ -23,6 +23,8 @@ namespace WebApi
                 DataGenerator.Initialize(services);
             }
             host.Run();
+
+            
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
