@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApi.Entities
@@ -9,5 +10,7 @@ namespace WebApi.Entities
         public int Id { get; set; }
         public string Fullname { get; set; }
         public DateTime Birthday { get; set; }
+
+        public ICollection<MovieActor>  MovieActors { get; set; }
     }
 }

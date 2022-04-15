@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using WebApi.DBOperations;
 
 namespace WebApi.Applications.ActorOperations.Queries.GetActorDetail
@@ -19,7 +21,7 @@ namespace WebApi.Applications.ActorOperations.Queries.GetActorDetail
 
         public ActorDetailViewModel Handle()
         {
-             var actor = _dbContext.Actors.Where(actor => actor.Id==ActorId).SingleOrDefault();
+             var actor = _dbContext.Actors.Include(x=> x.MovieActors).ThenInclude(x=> x.Movie).Where(actor => actor.Id==ActorId).SingleOrDefault();
 
              if(actor is null)
                throw new InvalidOperationException("Oyuncu bulunamadı!");
@@ -32,5 +34,6 @@ namespace WebApi.Applications.ActorOperations.Queries.GetActorDetail
     {
         public string Fullname { get; set; }
         public string Birthday { get; set; }
+        public List<string> ActorMovies { get; set; }
     }
 }

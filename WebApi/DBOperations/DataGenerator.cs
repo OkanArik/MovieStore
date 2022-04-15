@@ -17,6 +17,32 @@ namespace WebApi.DBOperations
                 {
                     return;
                 }
+                context.MovieActors.AddRange(
+                    new MovieActor{
+                        MovieId=1,
+                        ActorId=1
+                    },
+                    new MovieActor{
+                        MovieId=1,
+                        ActorId=2
+                    },
+                    new MovieActor{
+                        MovieId=1,
+                        ActorId=3
+                    },
+                    new MovieActor{
+                        MovieId=2,
+                        ActorId=1
+                    },
+                    new MovieActor{
+                        MovieId=3,
+                        ActorId=1
+                    },
+                    new MovieActor{
+                        MovieId=2,
+                        ActorId=2
+                    }
+                );
                 context.Directors.AddRange(
                     new Director{
                         FullName="Frank Darabont",
@@ -40,6 +66,18 @@ namespace WebApi.DBOperations
                     },
                     new Genre{
                         Name="Comedy Drama",
+                    },
+                    new Genre{
+                        Name="Animation",
+                    },
+                    new Genre{
+                        Name="Documentary",
+                    },
+                    new Genre{
+                        Name="Science Fiction",
+                    },
+                    new Genre{
+                        Name="Biography",
                     }
                 );
                 context.Actors.AddRange(
@@ -65,7 +103,7 @@ namespace WebApi.DBOperations
                         PublisDate = new DateTime(1995,03,10),
                         DirectorId = 1, // Frank Darabont
                         GenreId = 1 , // Drama
-                        ActorId = 1, //Tim Robbins
+                        //ActorId = 1, //Tim Robbins
                         Price = 111,
                     },
                     new Movie{ 
@@ -73,7 +111,7 @@ namespace WebApi.DBOperations
                         PublisDate = new DateTime(1973,10,01),
                         DirectorId = 2, // Francis Ford Coppola
                         GenreId = 2 , // Detective
-                        ActorId = 2, //Alpacino
+                        //ActorId = 2, //Alpacino
                         Price = 222,
                     },
                     new Movie{ 
@@ -81,7 +119,7 @@ namespace WebApi.DBOperations
                         PublisDate = new DateTime(1994,11,11),
                         DirectorId = 3, // Robert Zemeckis
                         GenreId = 3 , // Comedy Drama
-                        ActorId = 3 , // Tom Hanks
+                        //ActorId = 3 , // Tom Hanks
                         Price = 333,
                     }
                 );

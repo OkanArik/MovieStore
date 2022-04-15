@@ -19,7 +19,13 @@ namespace WebApi.Applications.MovieOperations.Queries.GetMovies
 
         public List<MoivesViewModel> Handle()
         {
-             var movieList = _dbContext.Movies.Include(x=>x.Actor).Include(x=>x.Genre).Include(x=>x.Director).OrderBy(x => x.Id).ToList();
+             var movieList = _dbContext.Movies
+                                              .Include(x=>x.Genre)
+                                              .Include(x=>x.Director)
+                                              .Include(x=> x.MovieActors)
+                                              .ThenInclude(x=> x.Actor)
+                                              .OrderBy(x => x.Id).ToList();
+             //.Include(x=>x.Actor).Include(x=>x.Genre).Include(x=>x.Director).OrderBy(x => x.Id).ToList();
              List<MoivesViewModel> vm= _mapper.Map<List<MoivesViewModel>>(movieList); 
               return vm;
         }
@@ -30,7 +36,7 @@ namespace WebApi.Applications.MovieOperations.Queries.GetMovies
         public string PublisDate { get; set; }
         public string Director { get; set; }
         public string Genre { get; set; }
-        public string ActorName { get; set; }
+        public List<string> ActorName { get; set; }
         public int Price { get; set; }
     }
 }
